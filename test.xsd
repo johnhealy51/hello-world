@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created with oYygen - XML Editor version 12.2 -->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Applications" type="AppType"/>
+  <xs:complexType name="AppType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element maxOccurs="unbounded" name="Account" type="AccountType"/>
+    </xs:sequence>
+    <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="AccountType">
+    <xs:sequence>
+      <xs:element name="CustomerAccount" type="CarAccountType" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MainDriverType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="FirstName">
+        <xs:annotation>
+          <xs:documentation>This is the First Name of the Customer</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+            <xs:minLength value="2"/>
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+      <xs:element minOccurs="1" name="LastName">
+        <xs:annotation>
+          <xs:documentation>This is the Last Name of the Customer</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+            <xs:maxLength value="100"/>
+            <xs:minLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" type="xs:string" name="Title"/>
+      <xs:element minOccurs="1" type="xs:string" name="Gender"/>
+      <xs:element minOccurs="1" name="DateOfBirth">
+        <xs:annotation>
+          <xs:documentation>The Customer's Date of Birth</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date">
+            <xs:minInclusive value="1939-01-01"/>
+            <xs:maxInclusive value="1996-01-01"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Address" type="AddressType"/>
+      <xs:element name="MainDriverNoClaims" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdditionalDriverType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="FirstName">
+        <xs:annotation>
+          <xs:documentation>This is the First Name of the Customer</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+            <xs:minLength value="2"/>
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="MiddleName" type="xs:string"/>
+      <xs:element minOccurs="1" name="LastName">
+        <xs:annotation>
+          <xs:documentation>This is the Last Name of the Customer</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+            <xs:maxLength value="100"/>
+            <xs:minLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="Title">
+        <xs:annotation>
+          <xs:documentation>Select the Title from the drop down list of Values</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="Gender">
+        <xs:annotation>
+          <xs:documentation>The Gender of the Customer</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="DateOfBirth">
+        <xs:annotation>
+          <xs:documentation>The Customer's Date of Birth</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date">
+            <xs:maxInclusive value="1996-01-01"/>
+            <xs:minInclusive value="1939-01-01"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Address" type="AddressType"/>
+      <xs:element name="AdditionalDriverPremium">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="5"/>
+            <xs:minExclusive value="0"/>
+            <xs:maxExclusive value="3151"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AdditionalDriverNoClaims" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="Make" type="xs:string"/>
+      <xs:element minOccurs="1" name="Model" type="xs:string"/>
+      <xs:element name="LicensePlate" type="xs:string"/>
+      <xs:element minOccurs="1" name="EngineCapacity">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="ModelDescription" type="xs:string"/>
+      <xs:element minOccurs="1" name="CarGroup" type="xs:string"/>
+      <xs:element name="ManufactureYear" type="xs:string"/>
+      <xs:element name="AnnualMileage">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="100000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="KeptOvernight">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Modification">
+        <xs:annotation>
+          <xs:documentation>Modifications made to a car. These can be the following categories:
+Performance and Asthetic
+ - Engine and Mechanics
+   - Supercharging
+   - Tuning
+   - Exhaust Systems
+   - Air Filter
+ - Bodywork
+   - Bonet Badges, flared wings, wheel arches
+   - spoilers and skirts
+   - tinted windows
+ - Interior
+   - Roll bars and cages
+   - replacement seats, steering wheels, pedals
+   - dashboard changes
+ - Brakes and Suspension
+   - uprated brakes
+   - suspension
+ - Paintwork
+   - special paint work
+   - strips decal
+ - Wheels
+   - Alloys
+   - wider wheels
+Functional
+ - Fuel Economy
+ - Car Climate
+ - Driver Aids
+ - Towing and storage
+</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="AddressLine1" type="xs:string"/>
+      <xs:element minOccurs="0" name="AddressLine2" type="xs:string"/>
+      <xs:element minOccurs="0" name="City" type="xs:string"/>
+      <xs:element minOccurs="1" name="Country" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarAccountType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="PolicyNumber">
+        <xs:simpleType>
+          <xs:restriction base="xs:long">
+            <xs:pattern value="[\+]?[0-99999999]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="BillDate" type="xs:date"/>
+      <xs:element minOccurs="1" name="BillDay">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="28"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="BillNumber">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:pattern value="[\+]?[0-9]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element maxOccurs="1" name="MainDriver" type="MainDriverType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="AdditionalDrivers"
+        type="AdditionalDriverType"/>
+      <xs:element name="Profile" type="ProfileType">
+        <xs:annotation>
+          <xs:documentation>This group contains the profile information of the Customer. The Profile contains details such as the customer's Age Range, Language preference for communication and whether they have additional cover etc.
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Category">
+        <xs:annotation>
+          <xs:documentation>The Category of Customer. This can be either Commercial, Private or Government</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CoverStartDate" type="xs:date"/>
+      <xs:element name="CoverEndDate" type="xs:date"/>
+      <xs:element name="IssueDate" type="xs:date"/>
+      <xs:element name="ContentId">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:totalDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="TransReason" type="xs:string"/>
+      <xs:element name="AccountPlan" type="CarPlanType"/>
+      <xs:element maxOccurs="unbounded" name="Car" type="CarType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProfileType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="Language" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The customers preferred Communication Language</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Jurisdiction" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Jurisdiction that the Customer Resides in</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="Channel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Their preferred channel of communication, Print, Email or SMS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Brand" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Brand that the customer was sold the Car Insurance under, i.e Customer1st (US and Rest of world), 1stCustomer (EMEA), 1stAsiaCustomer (APAC)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="IsSolicitable" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>This property signifies whether the customer is Solicitable with Marketing promotions and phone upgrades</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" name="Email" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The customer's Email address</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PromoCode">
+        <xs:annotation>
+          <xs:documentation>Promotion Code for offers. Promo Code will be an Enumerated type with numeric values which will allow us to trigger dynamic shared content based on this code</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="ContactNumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The customer's contact number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CarPlanType">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="CarUseCategory" type="xs:string"/>
+      <xs:element minOccurs="1" name="CoverLengthMonths">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="48"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PlanMonthlyCost">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="900"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PlanAnnualCost">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="HasMinimumTerm" type="xs:boolean" maxOccurs="1" nillable="0"
+        default="0"/>
+      <xs:element minOccurs="1" name="HasMulticarDiscount" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="DiscountPercentage" type="xs:integer"/>
+      <xs:element minOccurs="1" name="HasBusinessUseCover" type="xs:boolean" nillable="false"/>
+      <xs:element minOccurs="1" name="HasBroker" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasPaperlessBilling" type="xs:boolean"/>
+
+      <xs:element minOccurs="1" name="HasUninsuredDriverCover" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasHireCar" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasCollisionCover" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasComprehensiveCover" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasLiabilityCover" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasTelematics" type="xs:boolean"/>
+      <xs:element minOccurs="1" name="HasKeyCare" type="xs:boolean"/>
+
+      <xs:element name="UninsuredDriverCost" type="xs:decimal"/>
+      <xs:element name="HireCarCost" type="xs:decimal"/>
+      <xs:element name="CollisionCost" type="xs:decimal" minOccurs="0" maxOccurs="0"/>
+      <xs:element name="ComprehensiveCoverCost" type="xs:decimal"/>
+      <xs:element name="LiabilityCoverCost" type="xs:decimal"/>
+      <xs:element name="TelematicsCost" type="xs:decimal"/>
+      <xs:element name="KeyCareCost" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="USAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AddressType">
+        <xs:sequence>
+          <xs:element name="State">
+            <xs:annotation>
+              <xs:documentation>Enumerated Property with the following choices:
+TX = Texas
+FL = Florida
+NY = New York
+CA = California
+NH = New Hampshire
+CO = Colorado
+KS = Kansas
+NC = North Carolina
+PA = Pennsylvania
+WA = Washington
+GA = Georgia
+DC = District of Columbia
+
+</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"> </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="Zip" type="xs:integer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UKAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AddressType">
+        <xs:sequence>
+          <xs:element name="County" type="xs:string"/>
+          <xs:element name="PostCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
